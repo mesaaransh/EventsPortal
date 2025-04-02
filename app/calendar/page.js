@@ -1,12 +1,12 @@
 import Calendar from "./calendar";
-import "./about.css"
+import "./page.css"
 
-export default function About () {
-  return (
-    <div className="about section">
-      <div className="calendarCont">
-          <Calendar/>
-      </div>
+export default function Calendarcont(){
+
+  return(
+    <div className="homecalendar section">
+      <Calendar/>
     </div>
   )
+
 }

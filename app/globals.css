@@ -4,12 +4,49 @@
   box-sizing: border-box;
 }
 
+:root{
+  --white: rgb(235, 235, 235);
+  --black: rgb(3, 3, 3);
+}
+
 body{
   font-family: 'Montserrat';
+  background-color: var(--black);
   
 }
 
 .section{
   padding: 0px 3vw;
   padding-top: 60px;
+}
+
+
+button{
+  font-family: 'Montserrat';
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 30px;
+  border: 0px solid;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+
+button:hover{
+  scale: 1.05;
+}
+
+button.light{
+  background-color: var(--white);;
+  color: var(--black);
+}
+
+button.dark{
+  background-color: var(--black);
+  color: var(--white);
+}
+
+button.right{
+  margin-left: auto;
 }

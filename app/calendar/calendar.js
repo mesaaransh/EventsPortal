@@ -15,6 +15,7 @@ export default function Calendar() {
     let totalDays = lastDay.getDate();
 
     let firstDayIndex = firstDay.getDay();
+    let lastDayIndex = lastDay.getDay();
     let calendarDays = [];
 
     for (let i = 0; i < firstDayIndex; i++) {
@@ -33,8 +34,8 @@ export default function Calendar() {
                         {
                             day % 2 == 0 ?
                                 <>
-                                <div className="soc"></div>
-                                <div className="soc"></div>
+                                    <div className="soc"></div>
+                                    <div className="soc"></div>
                                 </>
                                 :
                                 <>
@@ -44,13 +45,17 @@ export default function Calendar() {
 
                     {
                         day % 2 == 0 ?
-                        <div className="count">02</div>
-                        :
-                        <></>
+                            <div className="count">02</div>
+                            :
+                            <></>
                     }
                 </div>
             </td>
         );
+    }
+    
+    for (let i = lastDayIndex + 1; i < 7; i++) {
+        calendarDays.push(<td key={`empty-end-${i}`}></td>);
     }
 
     const rows = [];
@@ -60,11 +65,10 @@ export default function Calendar() {
 
     return (
         <div className="cc">
-            
             <div className="monthSelector">
-                <div className="selector" onClick={() => setOffset(offset-1)}> {"<"} </div>
-                <h2>{firstDay.toLocaleString("default", { month: "long" })}</h2>
-                <div className="selector" onClick={() => setOffset(offset+1)}> {">"} </div>
+                <div className="selector" onClick={() => setOffset(offset - 1)}> {"<"} </div>
+                <h1>{firstDay.toLocaleString("default", { month: "long" })} {year}</h1>
+                <div className="selector" onClick={() => setOffset(offset + 1)}> {">"} </div>
             </div>
             <table className="calendar">
                 <thead>

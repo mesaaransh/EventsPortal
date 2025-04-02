@@ -6,7 +6,6 @@ export default function Home() {
     <main>
       <Hero />
       <EventLinup />
-      <Calendarcont/>
     </main>
   )
 }
@@ -73,17 +72,6 @@ function Event({ title, description, date, day, clas }) {
         <h1>{date}</h1>
         <p>{day}</p>
       </div>
-    </div>
-  )
-
-}
-
-function Calendarcont(){
-
-  return(
-    <div className="homecalendar section">
-      <h1>Calendar</h1>
-      <Calendar/>
     </div>
   )
 
