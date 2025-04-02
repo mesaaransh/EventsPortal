@@ -50,15 +50,22 @@
 
 .cc{
     padding-top: 2lh;
+    display: flex;
+    height: 80vh;
+}
+
+.calendarCont{
+    height: 80vh;
 }
 
 .calendar{
     border-collapse: collapse;
     font-family: 'Montserrat';
     width: 100%;
-    height: 500px;
+    height: inherit;
 
-    background-image: url('/graf3.jpeg');
+    background-image: url('/graf7.jpeg');
+    background-size: cover;
 }
 
 .calendar > thead > tr > th{
@@ -73,16 +80,18 @@
     font-weight: 600;
     border: 2px solid rgb(15, 15, 15);
     transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
     cursor: pointer;
 
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.93);
     backdrop-filter: grayscale(75%);
 
 }
 
 .calendar > tbody > tr > td:hover{
 
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
+    text-shadow: 0px 0px 10px black;
     backdrop-filter: grayscale(0%);
 
 }
@@ -95,6 +104,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    padding: 30px 0px;
     
     position: relative;
 }
@@ -167,4 +178,88 @@
     font-size: 0.9rem;
     aspect-ratio: 1;
 
+}
+
+.sideInfo{
+    height: 92vh;
+    overflow-y: scroll;
+    transition-duration: 300ms;
+    background-color: var(--black2);
+    padding: 20px;
+}
+
+.sideInfoClose{
+    width: 0px;
+    visibility: hidden;
+}
+
+.sideInfoOpen{
+    width: 30%;
+    min-width: 30%;
+    opacity: 1;
+}
+
+.sideInfo > .eventList{
+
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.sideMenuEvent{
+
+    position: relative;
+    width: 100%;
+
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+
+    /* background-image: url('/graf5.jpeg'); */
+    background-size: cover;
+
+    z-index: 0;
+    
+}
+
+.sideMenuEvent::after{
+    
+    position: absolute;
+    content: '';
+    
+    width: 100%;
+    height: 100%;
+    
+    top: 0;
+    left: 0;
+
+    background-color: black;
+    z-index: -1;
+    
+    opacity: 0.8;
+    transition-duration: 200ms;
+    
+}
+
+.sideMenuEvent:hover::after{
+    opacity: 0.5;
+}
+
+.sideMenuEvent > div:nth-of-type(1){
+    margin-right: 10px;
+    width: 15%;
+}
+
+.sideMenuEvent > div:nth-of-type(1) > h1{
+    font-size: 3rem;
+}
+
+.sideMenuEvent > div:nth-of-type(2){
+    flex-grow: 1;
+}
+
+.sideMenuEvent > div:nth-of-type(2) > p{
+    font-size: 0.9rem;
 }

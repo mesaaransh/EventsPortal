@@ -7,11 +7,19 @@
 :root{
   --white: rgb(235, 235, 235);
   --black: rgb(3, 3, 3);
+  --black2: rgb(10, 10, 10);
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
 }
 
 body{
   font-family: 'Montserrat';
   background-color: var(--black);
+
+  overflow-x: hidden;
   
 }
 

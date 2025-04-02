@@ -7,9 +7,9 @@ export default function Footer() {
                     <div className="col">
                         <h1>Thapar University</h1>
                         <br />
-                        <p>info@thapar.edu</p>
-                        <p>+91 8427600332</p>
-                        <p>Patiala, India 147004</p>
+                        <p>Thapar Institute of Engineering & Technology combines <br /> experience with new-age implementation.</p>
+                        <br />
+                        <p>P.O. Box 32, Bhadson Road, <br /> Patiala, Punjab, India</p>
                     </div>
                     <div className="col">
                         <div>
@@ -39,6 +39,11 @@ export default function Footer() {
                         <p>HackTU</p>
                         <p>E-Summit</p>
                     </div>
+                </div>
+
+                <div className="copyright">
+                    <p>All Rights Reserved</p>
+                    <p>Thapar Institute of Engineering and Technology</p>
                 </div>
 
             </div>
