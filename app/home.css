@@ -1,0 +1,147 @@
+main{
+
+    color: rgb(235, 235, 235);
+
+}
+
+.hero{
+
+    font-family: 'Montserrat';
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('/graf.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.hero::after{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+
+}
+
+.hero > h1{
+    font-size: 3.5rem;
+}
+
+.buttonGroup{
+    display: flex;
+    gap: 10px;
+
+    margin-top: 1lh;
+}
+
+button{
+    font-family: 'Montserrat';
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 10px 30px;
+    border: 0px solid;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition-duration: 200ms;
+}
+
+button:hover{
+    scale: 1.05;
+}
+
+button.light{
+    background-color: rgb(235, 235, 235);
+    color: rgb(22, 22, 22);
+}
+
+button.dark{
+    background-color: rgb(22, 22, 22);
+    color: rgb(235, 235, 235);
+}
+
+button.right{
+    margin-left: auto;
+}
+
+.eventLineup{
+
+    background-color: black;
+    color: rgb(235, 235, 235);
+    width: 100%;
+
+}
+
+.events{
+    margin-top: 2lh;
+    padding-bottom: 2lh;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2lh;
+}
+
+.event{
+
+    width: 100%;
+
+    font-size: 1rem;
+    
+    padding: 30px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.event > div:nth-of-type(1) > h1{
+    font-size: 3em;
+    text-shadow: 0px 0px 10px black, 0px 0px 20px black;
+}
+
+.event > div:nth-of-type(1) > p{
+    width: 70ch;
+    text-shadow: 0px 0px 10px black, 0px 0px 20px black, 0px 0px 30px black;
+}
+
+.event > div:nth-of-type(2){
+    text-align: right;
+}
+
+.test1{
+
+    background: repeating-linear-gradient( -45deg, rgb(0, 65, 117), rgb(0, 65, 117) 5px, rgb(0, 124, 226) 5px, rgb(0, 124, 226) 25px );
+    color: rgb(255, 255, 255);
+
+}
+
+.test2{
+
+    background: repeating-linear-gradient( -45deg, rgb(218, 167, 0), rgb(245, 188, 0) 5px, rgb(19, 19, 19) 5px, rgb(19, 19, 19) 25px );
+    color: rgb(255, 255, 255);
+    
+}
+
+
+.homecalendar{
+
+    width: 100%;
+    height: 120vh;
+    background-color: black;
+
+}
