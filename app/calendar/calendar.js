@@ -83,8 +83,8 @@ function SideMenu({open, date, month, year}) {
 
             <div className="eventList">
                 {
-                    [1, 2, 3, 4, 5, 6].map((key, i) => (
-                        <SideMenuEvent num={i+1}  />
+                    [1, 2, 3, 4, 5].map((key, i) => (
+                        <SideMenuEvent key={i} num={i+1}  />
                     ))
                 }
             </div>

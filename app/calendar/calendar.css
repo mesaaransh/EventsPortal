@@ -51,11 +51,6 @@
 .cc{
     padding-top: 2lh;
     display: flex;
-    height: 80vh;
-}
-
-.calendarCont{
-    height: 80vh;
 }
 
 .calendar{
@@ -181,8 +176,7 @@
 }
 
 .sideInfo{
-    height: 92vh;
-    overflow-y: scroll;
+    max-height: 100%;
     transition-duration: 300ms;
     background-color: var(--black2);
     padding: 20px;
@@ -190,12 +184,14 @@
 
 .sideInfoClose{
     width: 0px;
+    min-width: 0px;
     visibility: hidden;
 }
 
 .sideInfoOpen{
     width: 30%;
     min-width: 30%;
+    visibility: visible;
     opacity: 1;
 }
 
