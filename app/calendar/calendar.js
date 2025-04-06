@@ -5,14 +5,15 @@ import "./calendar.css"
 export default function Calendar() {
 
     let [offset, setOffset] = useState(0);
-    let [menuOpen, setMenuOpen] = useState(1);
+    let [menuOpen, setMenuOpen] = useState(0);
 
-    let [selectedDate, setSelectedDate] = useState(null)
-
+    
     let a = new Date();
     let date = new Date(a.getFullYear(), a.getMonth() + offset, a.getDate());
     let year = date.getFullYear();
     let month = date.getMonth();
+
+    let [selectedDate, setSelectedDate] = useState(a.getDate())
 
     let firstDay = new Date(year, month, 1);
     let lastDay = new Date(year, month + 1, 0);

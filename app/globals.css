@@ -5,7 +5,7 @@
 }
 
 :root{
-  --white: rgb(235, 235, 235);
+  --white: rgb(240, 240, 240);
   --black: rgb(3, 3, 3);
   --black2: rgb(10, 10, 10);
 }
@@ -18,14 +18,19 @@ a{
 body{
   font-family: 'Montserrat';
   background-color: var(--black);
+  color: var(--white);
 
   overflow-x: hidden;
   
 }
 
+main{
+  color: var(--white);
+}
+
 .section{
   padding: 0px 3vw;
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 
@@ -52,6 +57,17 @@ button.light{
 
 button.dark{
   background-color: var(--black);
+  color: var(--white);
+}
+
+button.outlinedark{
+  background-color: transparent;
+  border: 1px solid var(--black);
+  color: var(--black);
+}
+button.outlinelight{
+  background-color: transparent;
+  border: 1px solid var(--white);
   color: var(--white);
 }
 

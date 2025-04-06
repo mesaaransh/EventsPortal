@@ -1,11 +1,13 @@
-import Calendar from "./calendar/calendar"
 import "./home.css"
+import EventLinup from "./home/eventLineup"
+import SignatureEvents from "./home/signatureEvents"
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <EventLinup />
+      <SignatureEvents/>
     </main>
   )
 }
@@ -22,56 +24,6 @@ function Hero() {
         <button className="dark">View Socities</button>
       </div>
 
-    </div>
-  )
-
-}
-
-
-function EventLinup() {
-
-  return (
-    <div className="eventLineup section">
-
-      <h1>Event Linup</h1>
-
-      <div className="events">
-        <Event
-          title={"HackTU"}
-          description={'The biggest hackathon of northern hemisphere, now a MLH partner'}
-          date={"2nd January"}
-          day={'Thursday'}
-          clas={'test1'}
-        />
-
-        <Event
-          title={"E Summit 25"}
-          description={'A summit for entrepreneurs, by entrepreneurs'}
-          date={"28th February"}
-          day={'Friday'}
-          clas={'test2'}
-        />
-      </div>
-
-      <button className="right">View More</button>
-
-    </div>
-  )
-
-}
-
-function Event({ title, description, date, day, clas }) {
-
-  return (
-    <div className={"event " + clas}>
-      <div>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </div>
-      <div>
-        <h1>{date}</h1>
-        <p>{day}</p>
-      </div>
     </div>
   )
 
