@@ -29,7 +29,7 @@ main{
 }
 
 .section{
-  padding: 0px 3vw;
+  padding: 0px 5vw;
   padding-top: 80px;
 }
 
@@ -43,11 +43,26 @@ button{
   border-radius: 10px;
 
   cursor: pointer;
-  transition-duration: 200ms;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button > span{
+
+  margin-top: 3px;
+  margin-left: 10px;
+  width: 15px;
+  rotate: 45deg;
+
+
 }
 
 button:hover{
-  scale: 1.05;
+  scale: 1.02;
 }
 
 button.light{

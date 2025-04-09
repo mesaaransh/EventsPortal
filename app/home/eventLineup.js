@@ -1,6 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./eventLineup.css"
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons"
 
 export default function EventLinup() {
+
+
+    const data = fetch('')
 
     return (
       <div className="eventLineup section">
@@ -9,14 +14,14 @@ export default function EventLinup() {
   
         <div className="events">
           {
-            [0, 1].map((e, i) => (
+            [0, 1, 2].map((e, i) => (
               <Event
                 title={"Saturnalia' 25"}
                 description={'Let the world unite!'}
                 date={"23 Jan"}
                 day={'Thursday'}
                 society={'CCS'}
-                image = {(i+7)%10}
+                image = {(i+1)%10}
                 key={i+1}
               />
             ))
@@ -24,7 +29,7 @@ export default function EventLinup() {
   
         </div>
   
-        <button className="right">View More</button>
+        <button className="right"> View More <span><FontAwesomeIcon icon={faArrowUp} /></span> </button>
   
       </div>
     )

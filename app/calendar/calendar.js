@@ -1,13 +1,17 @@
 'use client';
-import { useState } from "react";
+
+import axios  from "axios";
+import { useEffect, useState } from "react";
 import "./calendar.css"
+
 
 export default function Calendar() {
 
+    const [events, setEvents] = useState([]);
+    let [selectedEvents, setSelectedEvents] = useState([])
     let [offset, setOffset] = useState(0);
     let [menuOpen, setMenuOpen] = useState(0);
 
-    
     let a = new Date();
     let date = new Date(a.getFullYear(), a.getMonth() + offset, a.getDate());
     let year = date.getFullYear();
@@ -23,13 +27,59 @@ export default function Calendar() {
     let lastDayIndex = lastDay.getDay();
     let calendarDays = [];
 
+
+    useEffect(() => {
+        console.log(selectedEvents);
+    }, [selectedEvents])
+
+
+    useEffect(() => {
+        const fetchEvents = async () => {
+            try {
+                const res = await axios.get("https://soc-perm-api.ccstiet.com/application/public/events/");
+                setEvents(res.data.data);
+            } catch (err) {
+                console.error("Failed to fetch events:", err);
+            }
+        };
+
+        fetchEvents();
+    }, [offset]);
+
+    const filteredEvents = events.filter((event) => {
+        const fromDate = new Date(event.date_from);
+        const toDate = new Date(event.date_to);
+
+        return (
+            (fromDate.getFullYear() === year && fromDate.getMonth() === month) ||
+            (toDate.getFullYear() === year && toDate.getMonth() === month)
+        );
+    });
+
     for (let i = 0; i < firstDayIndex; i++) {
         calendarDays.push(<td key={`empty-${i}`}></td>);
     }
 
     for (let day = 1; day <= totalDays; day++) {
+
+        const matchingEvents = filteredEvents.filter((event) => {
+            const from = new Date(event.date_from);
+            const to = new Date(event.date_to);
+            const thisDate = new Date(year, month, day);
+
+            return thisDate >= from && thisDate <= to;
+        });
+
         calendarDays.push(
-            <TD day={day} menuOpen={menuOpen} setMenuOpen={setMenuOpen} setSelectedDate={setSelectedDate} key={day} />
+            <TD
+                key={day}
+                day={day}
+                events={matchingEvents}
+                menuOpen={menuOpen}
+                setMenuOpen={setMenuOpen}
+                setSelectedDate={setSelectedDate}
+                setSelectedEvents={setSelectedEvents}
+            />
         );
     }
 
@@ -66,26 +116,26 @@ export default function Calendar() {
                 </table>
             </div>
 
-            <SideMenu open={menuOpen} year={year} month={month} date={selectedDate}/>
+            <SideMenu open={menuOpen} year={year} month={month} date={selectedDate} events={selectedEvents} />
 
         </div>
     );
 }
 
 
-function SideMenu({open, date, month, year}) {
+function SideMenu({ open, date, month, year, events }) {
 
     let d = new Date(year, month, date)
 
     return (
-        <div className={open ? "sideInfo sideInfoClose" : "sideInfo sideInfoOpen"}>
-            <h2>{d.toLocaleDateString("default", {dateStyle: 'long'})}</h2>
-            <p>{d.toLocaleDateString("default", {weekday: 'long'})}</p>
+        <div className={open ? "sideInfo sideInfoClose" : "sideInfo sideInfoOpen"} onClick={() => {console.log(selectedEvents)}}>
+            <h2>{d.toLocaleDateString("default", { dateStyle: 'long' })}</h2>
+            <p>{d.toLocaleDateString("default", { weekday: 'long' })}</p>
 
             <div className="eventList">
                 {
-                    [1, 2, 3, 4, 5].map((key, i) => (
-                        <SideMenuEvent key={i} num={i+1}  />
+                    events.map((event, i) => (
+                        <SideMenuEvent name={event.event_name} soc={event.society_shortname} time={event.time_from} key={i} num={i + 1} />
                     ))
                 }
             </div>
@@ -95,21 +145,27 @@ function SideMenu({open, date, month, year}) {
 
 }
 
-function SideMenuEvent({num}){
+function SideMenuEvent({ num, name, soc, time }) {
 
     let img = `url(/graf${num}.jpeg)`
 
-    return(
-        <div className="sideMenuEvent" style={{backgroundImage: img}}>
+    const formatted = new Date(`1970-01-01T${time}Z`).toLocaleTimeString([], {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      });
+
+    return (
+        <div className="sideMenuEvent" style={{ backgroundImage: img }}>
             <div>
                 <h1>{num}</h1>
             </div>
             <div>
-                <h3>Saturnalia 25</h3>
-                <p>TVC</p>
+                <h3>{name}</h3>
+                <p>{soc}</p>
             </div>
             <div>
-                <p>3:00 PM</p>
+                <p>{formatted}</p>
             </div>
 
         </div>
@@ -117,13 +173,17 @@ function SideMenuEvent({num}){
 
 }
 
-function TD({ day, menuOpen, setMenuOpen, setSelectedDate }) {
+function TD({ day, events = [], setSelectedDate, setMenuOpen, setSelectedEvents }) {
 
-
+    function clickHandle(){
+        setMenuOpen(0);
+        setSelectedDate(day);
+        setSelectedEvents(events)
+    }
 
     return (
 
-        <td key={day} className={day} onClick={() => { setMenuOpen(0); setSelectedDate(day)}}>
+        <td key={day} className={day} onClick={clickHandle}>
 
             <div>
                 <div className="date">
@@ -132,22 +192,18 @@ function TD({ day, menuOpen, setMenuOpen, setSelectedDate }) {
 
                 <div className="socs">
                     {
-                        day % 2 == 0 ?
-                            <>
-                                <div className="soc"></div>
-                                <div className="soc"></div>
-                            </>
-                            :
-                            <>
-                            </>
+                        events.map(() => (
+                            <div className="soc"></div>
+                        ))
+
                     }
                 </div>
 
                 {
-                    day % 2 == 0 ?
-                        <div className="count">02</div>
-                        :
-                        <></>
+                    events.length?
+                    <div className="count">{events.length}</div>
+                    :
+                    <></>
                 }
 
             </div>
