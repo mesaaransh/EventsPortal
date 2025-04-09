@@ -14,7 +14,7 @@ export default function EventLinup() {
   
         <div className="events">
           {
-            [0, 1, 2].map((e, i) => (
+            [0, 1].map((e, i) => (
               <Event
                 title={"Saturnalia' 25"}
                 description={'Let the world unite!'}
@@ -50,7 +50,7 @@ export default function EventLinup() {
           <p>{description}</p>
         </div>
         <div>
-            <h1>ISTE</h1>
+            <h1>{society}</h1>
             <button className="outlinelight">
                 Learn More
             </button>

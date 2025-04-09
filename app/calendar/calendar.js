@@ -27,12 +27,6 @@ export default function Calendar() {
     let lastDayIndex = lastDay.getDay();
     let calendarDays = [];
 
-
-    useEffect(() => {
-        console.log(selectedEvents);
-    }, [selectedEvents])
-
-
     useEffect(() => {
         const fetchEvents = async () => {
             try {
@@ -192,8 +186,8 @@ function TD({ day, events = [], setSelectedDate, setMenuOpen, setSelectedEvents 
 
                 <div className="socs">
                     {
-                        events.map(() => (
-                            <div className="soc"></div>
+                        events.map((k, i) => (
+                            <div key={i} className="soc"></div>
                         ))
 
                     }
